@@ -1,0 +1,24 @@
+<section class="searchField">
+    <form ng-submit="query()">
+        <input type="text" ng-model="searchTerm">
+        <button type="submit">Search</button>
+    </form>
+</section>
+<section class="results">
+    <div class="no-recipes" ng-hide="recipes.length">No Results</div>
+    <article class="recipe" ng-repeat="recipe in recipes" ngcloack="">
+        <h2>
+            <a ui-sref="{{recipe.url}}">{{recipe.name}}</a>
+        </h2>
+        <ul>
+            <li ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</li>
+        </ul>
+        <p>
+            {{recipe.description}}
+            <a href="" ui-sref="{{recipe.url}}"> ... more at {{recipe.source}}</a>
+        </p>
+    </article>
+    <div class="load-more" ng-hide="allResults" ngcloak="">
+        <a ng-click="loadMore()">More...</a>
+    </div>
+</section>
